@@ -100,12 +100,4 @@ func CreateComment(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "create pr failed"})
 		return
 	}
-
-	err = gc.MergePR(ctx, pr)
-	if err != nil {
-		log.Printf("merge pr failed: %v", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "merge pr failed"})
-	}
-
-	log.Printf("pr %d merged", pr)
 }
