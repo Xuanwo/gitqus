@@ -94,7 +94,7 @@ func CreateComment(c *gin.Context) {
 		return
 	}
 
-	pr, err := gc.CreatePR(ctx, message, ref, meta.Branch)
+	_, err = gc.CreatePR(ctx, message, ref, meta.Branch)
 	if err != nil {
 		log.Printf("create pr failed: %v", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "create pr failed"})
